@@ -1,0 +1,36 @@
+{
+  "name": "bifurcation",
+  "version": "1.0.0",
+  "description": "Compute a bifurcation diagram efficiently",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piercus/bifurcation.git"
+  },
+  "keywords": [
+    "bifuraction",
+    "diagram",
+    "chaos",
+    "logistic",
+    "regression",
+    "regression",
+    "mathematics",
+    "feigenbaum",
+    "feigenbaumJS"
+  ],
+  "author": "Pierre Colle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piercus/bifurcation/issues"
+  },
+  "homepage": "https://github.com/piercus/bifurcation#readme",
+  "dependencies": {
+    "ava": "^0.25.0"
+  }
+}
