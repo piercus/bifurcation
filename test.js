@@ -26,6 +26,16 @@ const testsAttractors = [{
 		output: {
 			attractors: [0.5130445095493879, 0.7994554904667249]
 		}
+  },{
+		input : {
+			param: 2.995,
+			min: 0,
+			max: 1,
+			precision : 0.0001
+		},
+		output: {
+			attractors: [0.6661101762448313]
+		}
 }];
 
 const testChaos = [{
@@ -72,7 +82,7 @@ const testChaos = [{
 		input : {
 			param: 3.7,
 			precision: 0.00000001,
-			min: 0.399999,
+			min: 0.3999999,
 			max: 0.4
 		},
 		output: {
@@ -80,10 +90,9 @@ const testChaos = [{
 		}
 }];
 
-const macro = (t, {fn, inverse, input, expected, label}) => {
+const macro = (t, {fn, input, expected, label}) => {
 	const bif = new Bif({
-		fn,
-		inverse: inverse
+		fn
 	});
 	console.time(label)
 	return bif.attractors(input).then(v => {
@@ -95,13 +104,14 @@ const macro = (t, {fn, inverse, input, expected, label}) => {
 			}
 		}
 		if(v.chaos){
+			t.is(typeof(expected.chaos), typeof(v.chaos));
 			for(var i = 0; i < v.chaos.length; i++){
 				//console.log(v.chaos[i], v.chaos, input);
 				const precision = (input.precision || 0.0001)*2;
 				const rangeStart = v.chaos[i][0];
 				const expectedStart =  expected.chaos[i][0];
 				const rangeEnd = v.chaos[i][1];
-				const expectedEnd =  expected.chaos[i][1];				
+				const expectedEnd =  expected.chaos[i][1];
 				t.true(Math.abs(rangeStart - expectedStart) < precision, rangeStart + ' is different than ' + expectedStart + ' for precision ' + precision);
 				t.true(Math.abs(rangeEnd - expectedEnd) < precision, rangeEnd + ' is different than ' + expectedEnd + ' for precision ' + precision);
 			}
