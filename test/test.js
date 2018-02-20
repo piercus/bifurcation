@@ -103,8 +103,8 @@ const macro = (t, {fn, input, expected, label}) => {
 				t.true(Math.abs(v.attractors[i] - expected.attractors[i]) < precision, v.attractors[i] + ' is different than ' + expected.attractors[i] + ' for precision ' + precision);
 			}
 		}
+		t.is(typeof(expected.chaos), typeof(v.chaos));
 		if(v.chaos){
-			t.is(typeof(expected.chaos), typeof(v.chaos));
 			for(var i = 0; i < v.chaos.length; i++){
 				//console.log(v.chaos[i], v.chaos, input);
 				const precision = (input.precision || 0.0001)*2;
